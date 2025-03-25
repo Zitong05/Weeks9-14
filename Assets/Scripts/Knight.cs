@@ -8,11 +8,14 @@ public class Knight : MonoBehaviour
     Animator animator;
     SpriteRenderer sr;
     public bool canRun = true;
+    public AudioSource audio;
+    public AudioClip[] audiolist;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        audio = GetComponent<AudioSource>();
     }
 
     
@@ -25,6 +28,7 @@ public class Knight : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            //audio.Play();
             animator.SetTrigger("attack");
             canRun = false;
         }
@@ -37,6 +41,18 @@ public class Knight : MonoBehaviour
     public void AttackHasFinished()
     {
         canRun = true;
+    }
+
+    public void PlaySound()
+    {
+        Debug.Log("playsound");
+
+        int randomNumber = Random.Range(0, audiolist.Length);
+        Debug.Log(audiolist[randomNumber].name);
+
+        audio.clip = (audiolist[randomNumber]);
+        audio.Play();
+        
     }
 
 }
