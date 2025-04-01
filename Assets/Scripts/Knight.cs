@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Knight : MonoBehaviour
     public bool canRun = true;
     public AudioSource audio;
     public AudioClip[] audiolist;
+    public CinemachineImpulseSource impulseSource;
 
     void Start()
     {
@@ -52,7 +54,7 @@ public class Knight : MonoBehaviour
 
         audio.clip = (audiolist[randomNumber]);
         audio.Play();
-        
+        impulseSource.GenerateImpulse(0.1f);
     }
 
 }
