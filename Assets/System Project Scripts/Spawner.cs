@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject Bullet;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public WeaponSwitcher weaponswitcher;
+    public GameObject bulletPrefab;
+    public Transform target;
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(Bullet, transform.position, transform.rotation);
+            
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+
+           
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.target = target;
+            bulletScript.weaponswitcher = weaponswitcher;
+
         }
     }
 }
+

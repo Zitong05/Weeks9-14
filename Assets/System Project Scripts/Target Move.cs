@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TargetMove : MonoBehaviour
 {
-    public float speed = 5;
+    public float speedx = 5;
+    public float speedy = 5;
 
     void Start()
     {
@@ -15,14 +16,21 @@ public class TargetMove : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        pos.x += speed * Time.deltaTime;
+        pos.x += speedx * Time.deltaTime;
+        pos.y += speedy * Time.deltaTime;
 
         Vector2 screenPos = Camera.main.WorldToScreenPoint(pos);
 
-        if ( pos.x < -5 || screenPos.x > Screen.width)
+        if ( pos.x < 0 || screenPos.x > Screen.width)
         {
-            speed = speed * -1;
+            speedx = speedx * -1;
         }
+
+        if ( screenPos.y < 0 || screenPos.y > Screen.height)
+        {
+            speedy = speedy * -1.0001f;
+        }
+
         transform.position = pos;
     }
 }
