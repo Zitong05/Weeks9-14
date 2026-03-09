@@ -27,7 +27,7 @@ public class ControllerInput : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        context.ReadValue<Vector2>();
+        movemnet = context.ReadValue<Vector2>();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
