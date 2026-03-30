@@ -16,7 +16,7 @@ public class ControllerInput : MonoBehaviour
     void Update()
     {
         //transform.position += (Vector3)movemnet * speed * Time.deltaTime;
-        transform.position = movemnet;
+        transform.position += (Vector3)movemnet * speed * Time.deltaTime;
     }
 
     public void OnPoint(InputAction.CallbackContext context)
