@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 87057538}
   - component: {fileID: 87057539}
   m_Layer: 0
-  m_Name: HeroKnight_0
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,19 @@ MonoBehaviour:
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 87057538}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -345,6 +357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
   speed: 5
   movement: {x: 0, y: 0}
+  animator: {fileID: 0}
+  dashSpeed: 10
+  dashDuration: 0.25
 --- !u!95 &87057539
 Animator:
   serializedVersion: 7
@@ -515,7 +530,7 @@ GameObject:
   - component: {fileID: 1232040456}
   - component: {fileID: 1232040455}
   m_Layer: 0
-  m_Name: Shadow_0
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
