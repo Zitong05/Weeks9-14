@@ -19,8 +19,7 @@ public class LightMovement : MonoBehaviour
 
         if (Timer >= changeInterval)
         {
-            float currentSpeed = speed.magnitude;
-            speed = Random.insideUnitCircle.normalized * currentSpeed;
+            speed = Random.insideUnitCircle.normalized * 5f;
             Timer = 0f;
         }
 
@@ -29,17 +28,32 @@ public class LightMovement : MonoBehaviour
         newPosition += speed * Time.deltaTime;
         transform.position = newPosition;
 
-        //Stay within screen
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
-        if (screenPos.x < 0 || screenPos.x > Screen.width)
+        //Stay within screen
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        if (screenPos.x < 0)
         {
+            screenPos.x = 0;
+            speed.x *= -1;
+        }
+        else if (screenPos.x > Screen.width)
+        {
+            screenPos.x = Screen.width;
             speed.x *= -1;
         }
 
-        if (screenPos.y < 0 || screenPos.y > Screen.height)
+        if (screenPos.y < 0)
         {
+            screenPos.y = 0;
             speed.y *= -1;
         }
+        else if (screenPos.y > Screen.height)
+        {
+            screenPos.y = Screen.height;
+            speed.y *= -1;
+        }
+
+        transform.position = Camera.main.ScreenToWorldPoint(screenPos);
     }
 }
