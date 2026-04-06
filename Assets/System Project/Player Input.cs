@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInputSystem : MonoBehaviour
 {
     public float speed = 5;
     public Vector2 movement;
